@@ -64,6 +64,15 @@ export default [
     lazyPlayer: lazy(() => import(/* webpackChunkName: 'reactPlayerVidyard' */'./Vidyard'))
   },
   {
+    key: 'hlsjsp2p',
+    name: 'HlsJsP2P',
+    canPlay: canPlay.hlsjsp2p,
+    canEnablePIP: url => {
+      return canPlay.file(url) && (document.pictureInPictureEnabled || supportsWebKitPresentationMode()) && !AUDIO_EXTENSIONS.test(url)
+    },
+    lazyPlayer: lazy(() => import(/* webpackChunkName: 'reactPlayerHlsJsP2P' */'./HlsJsP2P'))
+  },
+  {
     key: 'file',
     name: 'FilePlayer',
     canPlay: canPlay.file,
